@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import '.clApp.css';
 import Users from './Users';
 import Clscomp from './Clscomp';
 import Student from './Student';
