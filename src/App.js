@@ -1,23 +1,40 @@
+import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Users from './Users';
+import Clscomp from './Clscomp';
+import Student from './Student';
 
+
+let data = "khan"
 function App() {
+  let [data,setData] = useState(0)
+ 
+
+  function Apple()
+  {
+    return(<div>Apple component</div>)
+  }
+
+
+
+  function updatedata()
+  {
+    setData(data+1)
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{data}</h1>
+      <button onClick={updatedata}>Click Me</button>
+     <Users/>
+     <Clscomp/>
+     <Apple/>
+     <Student name={"arslanbaloch"} email={"iamarslanbaloch@gmail.com"}/>
+    
+
+
     </div>
   );
 }
