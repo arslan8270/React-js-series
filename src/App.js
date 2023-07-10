@@ -7,6 +7,7 @@ import Student from './Student';
 import Profunc from './Profunc';
 import Procls from './Procls';
 import Getinbox from './Getinbox';
+import HideShow from './HideShow';
 
 
 let data = "khan baloch"
@@ -34,6 +35,7 @@ function App() {
       <button onClick={updatedata}>Click Me</button>
     
      <Getinbox/>
+     <HideShow/>
      <Profunc name={name} />
      <button onClick={()=>{setName("iamarslan")}}>Change the name</button>
      
@@ -42,8 +44,6 @@ function App() {
 
      <Procls name={name}/>
      <button onClick={()=>{setName("hello mister")}}>Change my name</button>
-     
-  s
 
     </div>
   );
