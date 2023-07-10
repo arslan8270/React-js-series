@@ -9,6 +9,9 @@ import Procls from './Procls';
 import Getinbox from './Getinbox';
 import HideShow from './HideShow';
 import Formdata from './Formdata';
+import Profile from './Profile';
+
+
 
 
 
@@ -40,6 +43,7 @@ function App() {
      <Getinbox/>
      <HideShow/>
      <Formdata/>
+     <Profile/>
      <Profunc name={name} />
      <button onClick={()=>{setName("iamarslan")}}>Change the name</button>
      
