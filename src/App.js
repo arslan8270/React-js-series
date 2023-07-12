@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Users from './Users';
@@ -10,51 +10,73 @@ import Getinbox from './Getinbox';
 import HideShow from './HideShow';
 import Formdata from './Formdata';
 import Profile from './Profile';
-
-
-
-
-
+import PassFunc from './PassFunc';
+import Members from './Members';
+import RenderCycle from './RenderCycle';
 
 let data = "khan baloch"
-function App() {
-  let [data,setData] = useState(0)
-  let [name ,setName] = useState('khanbaloch')
- 
+class App extends React.Component{
 
-  function Apple()
+  constructor()
   {
-    return(<div>Apple component</div>)
+    console.log("Constructor")
+    super();
+    this.state={
+      count:0
+    }
+  }
+
+  componentDidUpdate(preProps,preState,snapshot)
+  {
+      console.log("componentDidUpdate",preState.count,this.state.count)
+
+  if(this.state.count<10)
+  {
+    this.setState({count:this.state.count+1})
+  }
+
+  }
+
+
+  render()
+  {
+    console.log("render")
+  function Apple() {
+    return (<div>Apple component</div>)
   }
 
 
 
-  function updatedata()
+  function getData()
   {
-    setData(data+1)
+    alert("Hello from App")
   }
 
 
   return (
     <div className="App">
       <h1>{data}</h1>
-      <button onClick={updatedata}>Click Me</button>
+      
+
+      <Getinbox/>
+      <HideShow/>
+      <Formdata/>
+      <Profile/>
+      <Student name={"arslanbaloch"} email={"iamarslanbaloch@gmail.com"} />     
+      <PassFunc data={getData}/>
+        <Members data={getData}/>
+        <RenderCycle/>
+
+        <h1>Component did update{this.state.count}</h1>
+        <button onClick={()=>{this.setState({count:1})}}>Update Name</button>
+
+
+
     
-     <Getinbox/>
-     <HideShow/>
-     <Formdata/>
-     <Profile/>
-     <Profunc name={name} />
-     <button onClick={()=>{setName("iamarslan")}}>Change the name</button>
-     
-
-     <Student name={"arslanbaloch"} email={"iamarslanbaloch@gmail.com"}/>
-
-     <Procls name={name}/>
-     <button onClick={()=>{setName("hello mister")}}>Change my name</button>
-
     </div>
   );
+
+  }
 }
 
 export default App;
