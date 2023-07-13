@@ -13,68 +13,85 @@ import Profile from './Profile';
 import PassFunc from './PassFunc';
 import Members from './Members';
 import RenderCycle from './RenderCycle';
+import WillUnmount from './WillUnmount';
+import Hook from './Hook';
+import UseEffectHook from './UseEffectHook';
+
+
 
 let data = "khan baloch"
-class App extends React.Component{
+class App extends React.Component {
+  
 
-  constructor()
-  {
+  constructor() {
     console.log("Constructor")
     super();
-    this.state={
-      count:0
+    this.state = {
+      count: 0,
+      show:true,
+      newdata:"ali"
+
     }
   }
 
-  componentDidUpdate(preProps,preState,snapshot)
-  {
-      console.log("componentDidUpdate",preState.count,this.state.count)
+  componentDidUpdate(preProps, preState, snapshot) {
+    console.log("componentDidUpdate", preState.count, this.state.count)
 
-  if(this.state.count<10)
-  {
-    this.setState({count:this.state.count+1})
-  }
+    if (this.state.count < 10) {
+      this.setState({ count: this.state.count + 1 })
+    }
 
   }
 
-
-  render()
+  shouldComponentUpdate()
   {
+    console.log("Shouldcomponentupdate",this.state.count);
+   if(this.state.count>5 && this.state.count<10)
+   {
+    return true
+   }
+  }
+
+
+
+  render() {
     console.log("render")
-  function Apple() {
-    return (<div>Apple component</div>)
-  }
+    function Apple() {
+      return (<div>Apple component</div>)
+    }
 
 
 
-  function getData()
-  {
-    alert("Hello from App")
-  }
+    function getData() {
+      alert("Hello from App")
+    }
 
 
-  return (
-    <div className="App">
-      <h1>{data}</h1>
-      
+    return (
+      <div className="App">
+        <h1>{data}</h1>
 
-      <Getinbox/>
-      <HideShow/>
-      <Formdata/>
-      <Profile/>
-      <Student name={"arslanbaloch"} email={"iamarslanbaloch@gmail.com"} />     
-      <PassFunc data={getData}/>
-        <Members data={getData}/>
-        <RenderCycle/>
+
+        <Getinbox />
+        <HideShow />
+        <Formdata />
+        <Profile />
+        <Student name={"arslanbaloch"} email={"iamarslanbaloch@gmail.com"} />
+        <PassFunc data={getData} />
+        <Members data={getData} />
+        <RenderCycle />
+        <Hook/>
 
         <h1>Component did update{this.state.count}</h1>
-        <button onClick={()=>{this.setState({count:1})}}>Update Name</button>
+        <button onClick={() => { this.setState({ count: this.state.count + 1 }) }}>Update Name</button>
 
+ 
+        {this.state.show ? <WillUnmount/>: <h1>Child component removed</h1>}
+       <button onClick={()=>this.setState({show:!this.state.show})}>Toggle child component</button>
 
-
-    
-    </div>
-  );
+        <UseEffectHook/>
+           </div>
+    );
 
   }
 }
