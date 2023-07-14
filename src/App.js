@@ -16,6 +16,8 @@ import RenderCycle from './RenderCycle';
 import WillUnmount from './WillUnmount';
 import Hook from './Hook';
 import UseEffectHook from './UseEffectHook';
+import './style.css';
+import style from './custom.module.css'
 
 
 
@@ -69,7 +71,12 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <h1>{data}</h1>
+        <h1 className='primary'>{data}</h1>
+        <h1 style={{color:'blue',backgroundColor:"black"}}>{data}</h1>
+        <h1 className={style.success}>{data}</h1>
+
+
+
 
 
         <Getinbox />
