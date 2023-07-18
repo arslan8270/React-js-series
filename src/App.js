@@ -24,6 +24,9 @@ import NestedArray from "./NestedArray";
 import ReuseComponent from "./ResuseComponent";
 import Cols from "./Cols";
 import Child from "./Child";
+import PureComponent from "./PureComponentone";
+import PureComponentone from "./PureComponentone";
+
 
 let data = "khan baloch";
 class App extends React.Component {
@@ -44,7 +47,7 @@ class App extends React.Component {
     console.log("componentDidUpdate", preState.count, this.state.count);
 
     if (this.state.count < 10) {
-      this.setState({ count: this.state.count + 1 });
+      this.setState({ count:1});
     }
   }
 
@@ -106,6 +109,8 @@ class App extends React.Component {
         <NestedArray />
         <ReuseComponent />
         <Child alert={parentAlert}/>
+        <PureComponentone/>  
+   
 
         <div>
           <h1>React Fragment</h1>
